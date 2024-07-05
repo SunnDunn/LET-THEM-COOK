@@ -1,8 +1,7 @@
 using Godot;
 using System;
 
-
-public partial class TestEnemyHandler : Node
+public partial class TestPlayerHandler : Node
 {
 	private ITurnHandler turnHandler;
 	// Called when the node enters the scene tree for the first time.
@@ -22,9 +21,7 @@ public partial class TestEnemyHandler : Node
 		// Replace with function body.
 		if (!this.turnHandler.canMove) return;
 		
-		GD.Print("Hello!");
+		GD.Print("I am friendly!");
 		this.turnHandler.EndTurn();
 	}
 }
-
-

@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Godot Projects\\Let Them Cook Fork\\LET-THEM-COOK\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0122C3-CC63-4C75-8A09-E79A544A35C7}|LET THEM COOK.csproj|d:\\godot projects\\let them cook fork\\let-them-cook\\controller\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA0122C3-CC63-4C75-8A09-E79A544A35C7}|LET THEM COOK.csproj|solutionrelative:controller\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0122C3-CC63-4C75-8A09-E79A544A35C7}|LET THEM COOK.csproj|d:\\godot projects\\let them cook fork\\let-them-cook\\model\\ui\\turnlabelhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA0122C3-CC63-4C75-8A09-E79A544A35C7}|LET THEM COOK.csproj|solutionrelative:model\\ui\\turnlabelhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0122C3-CC63-4C75-8A09-E79A544A35C7}|LET THEM COOK.csproj|d:\\godot projects\\let them cook fork\\let-them-cook\\model\\entities\\testmultiple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA0122C3-CC63-4C75-8A09-E79A544A35C7}|LET THEM COOK.csproj|solutionrelative:model\\entities\\testmultiple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TurnManager.cs",
+              "DocumentMoniker": "D:\\Godot Projects\\Let Them Cook Fork\\LET-THEM-COOK\\Controller\\TurnManager.cs",
+              "RelativeDocumentMoniker": "Controller\\TurnManager.cs",
+              "ToolTip": "D:\\Godot Projects\\Let Them Cook Fork\\LET-THEM-COOK\\Controller\\TurnManager.cs",
+              "RelativeToolTip": "Controller\\TurnManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T08:41:07.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TurnLabelHandler.cs",
+              "DocumentMoniker": "D:\\Godot Projects\\Let Them Cook Fork\\LET-THEM-COOK\\Model\\UI\\TurnLabelHandler.cs",
+              "RelativeDocumentMoniker": "Model\\UI\\TurnLabelHandler.cs",
+              "ToolTip": "D:\\Godot Projects\\Let Them Cook Fork\\LET-THEM-COOK\\Model\\UI\\TurnLabelHandler.cs",
+              "RelativeToolTip": "Model\\UI\\TurnLabelHandler.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T08:41:01.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TestMultiple.cs",
+              "DocumentMoniker": "D:\\Godot Projects\\Let Them Cook Fork\\LET-THEM-COOK\\Model\\Entities\\TestMultiple.cs",
+              "RelativeDocumentMoniker": "Model\\Entities\\TestMultiple.cs",
+              "ToolTip": "D:\\Godot Projects\\Let Them Cook Fork\\LET-THEM-COOK\\Model\\Entities\\TestMultiple.cs",
+              "RelativeToolTip": "Model\\Entities\\TestMultiple.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T08:40:37.068Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

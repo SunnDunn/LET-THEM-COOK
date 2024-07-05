@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4gqe4f1loub6"]
+[gd_scene load_steps=4 format=3 uid="uid://b4gqe4f1loub6"]
 
+[ext_resource type="Script" path="res://Model/Entities/TestPlayerHandler.cs" id="1_j7pxc"]
+[ext_resource type="PackedScene" uid="uid://dinmetjyx36v8" path="res://Scenes/Components/unit_turn_handler.tscn" id="2_eepvc"]
 [ext_resource type="Texture2D" uid="uid://d4bxk1ov5wuo1" path="res://icon.svg" id="2_jqx2q"]
 
 [node name="Test_Player" type="Node2D" groups=["FriendlyUnit"]]
+script = ExtResource("1_j7pxc")
+
+[node name="UnitTurnHandler" parent="." instance=ExtResource("2_eepvc")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_jqx2q")

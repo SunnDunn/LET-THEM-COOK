@@ -6,12 +6,21 @@
 
 [node name="TestScene" type="Node2D"]
 
-[node name="Test_Player" parent="." instance=ExtResource("1_35ggj")]
-position = Vector2(92, -190)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="TurnUI" parent="Camera2D" instance=ExtResource("2_63u7u")]
 
 [node name="test_enemy" parent="." instance=ExtResource("2_hsucc")]
 position = Vector2(-262, -162)
+
+[node name="test_enemy2" parent="." instance=ExtResource("2_hsucc")]
+position = Vector2(-130, 76)
+
+[node name="test_enemy3" parent="." instance=ExtResource("2_hsucc")]
+position = Vector2(-397, 177)
+
+[node name="Test_Player" parent="." instance=ExtResource("1_35ggj")]
+position = Vector2(92, -190)
+
+[node name="Test_Player2" parent="." instance=ExtResource("1_35ggj")]
+position = Vector2(290, -42)

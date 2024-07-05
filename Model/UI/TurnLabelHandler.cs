@@ -1,18 +1,24 @@
 using Godot;
 using System;
 
-public partial class TurnLabelHandler : Node
+public partial class TurnLabelHandler : Label
 {
-	private Label parentLabel;
 	private TurnManager _turnManager;
+	
 	public override void _Ready()
 	{
-		this.parentLabel = GetParent() as Label;
-		this._turnManager = (TurnManager) GetNode("/root/global");
+		this._turnManager = (TurnManager) GetNode("/root/TurnManager");
 	}
 	
 	public override void _Process(double _delta)
 	{
-		this.parentLabel.Text = this._turnManager.CurrentTurn;
+		if (this._turnManager == null)
+		{
+			GD.Print("No turn manager found!");
+			return;
+		}
+		
+		this.Text = this._turnManager.CurrentTurn;
+		
 	}
 }

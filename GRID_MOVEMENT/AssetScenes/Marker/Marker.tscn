@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbkurioiac2a7"]
+
+[ext_resource type="Script" path="res://GRID_MOVEMENT/AssetScenes/Marker/Marker.gd" id="1_2thmp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2qoa"]
+albedo_color = Color(0.836666, 0.810405, 0.0881648, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4oull"]
+material = SubResource("StandardMaterial3D_w2qoa")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pu1it"]
+
+[node name="Marker" type="CharacterBody3D"]
+script = ExtResource("1_2thmp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, -0.707107, 0, 0.5, 0.5, -0.707107, 0.5, 0.5, 0.707107, 0, 1, 0)
+mesh = SubResource("BoxMesh_4oull")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+shape = SubResource("SphereShape3D_pu1it")

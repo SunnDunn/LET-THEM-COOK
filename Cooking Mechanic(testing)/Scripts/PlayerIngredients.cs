@@ -13,6 +13,7 @@ public partial class PlayerIngredients : Godot.ItemList {
 	private Texture2D _icon = GD.Load<Texture2D>("res://icon.svg");
 	private List<int> _clickCounts = new List<int>();
 
+	/*a list that stores the order of the vegetables with a getter*/
 	private List<RecipeVegetable> _vegList = new List<RecipeVegetable>();
 	public List<RecipeVegetable> vegList {
 		get { return this._vegList; }

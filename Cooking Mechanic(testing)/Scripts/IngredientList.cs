@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public partial class IngredientList : ItemList {
 	private Texture2D _icon = GD.Load<Texture2D>("res://icon.svg");
 
+
+	/*a list of strings that stores the order of the vegetables (name only) with a getter*/
 	private List<string> _vegetables = new List<string>();
 	public List<string> vegetables {
 		get { return this._vegetables; }
@@ -28,22 +30,22 @@ public partial class IngredientList : ItemList {
 			string itemName = this.GetItemText(i);
 
 			if (itemName == name) {
-				if(count == 0){
-					this.RemoveItem(i);
+				if(count == 0) {        /*remove from itemlist and the from the list defined in this code*/
+					this.RemoveItem(i); 
 					this._vegetables.Remove(name);
 				}
 				else {
 					this.SetItemText(i, name);
 					
 				}
-                found = true;
-            }
+				found = true;
+			}
 		}
 
 		if(!found) {
 			this.AddItem(name, this._icon, true);
-            this._vegetables.Add(name);
-        }
+			this._vegetables.Add(name);
+		}
 		
 	}
 }

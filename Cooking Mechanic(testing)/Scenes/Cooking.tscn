@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://bx4padegoj8ee"]
+
+[ext_resource type="Script" path="res://Cooking Mechanic(testing)/Scripts/PlayerIngredients.cs" id="1_y8sos"]
+[ext_resource type="Script" path="res://Cooking Mechanic(testing)/Scripts/IngredientList.cs" id="2_np1d6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ksy4i"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5s2d7"]
+sky_material = SubResource("ProceduralSkyMaterial_ksy4i")
+
+[sub_resource type="Environment" id="Environment_fyj5y"]
+background_mode = 2
+sky = SubResource("Sky_5s2d7")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxmwo"]
+bg_color = Color(0.243468, 0.613475, 0.980568, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52tq3"]
+bg_color = Color(0.121569, 0.180392, 0.239216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k81ad"]
+bg_color = Color(0.121569, 0.180392, 0.239216, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_q0dyx"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fyj5y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, -0.333125, 0.872549, 0.357332, -0.372868, 0.226176, -0.899896, 0, 4.8034, 2.43183)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638268, -0.148525)
+
+[node name="Cooking UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cooking Window" type="Panel" parent="Cooking UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fxmwo")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Cooking UI/Cooking Window"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = 46.0
+offset_right = -53.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 500
+
+[node name="PlayerIngerdients" type="ItemList" parent="Cooking UI/Cooking Window/HSplitContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/panel = SubResource("StyleBoxFlat_52tq3")
+allow_reselect = true
+allow_rmb_select = true
+script = ExtResource("1_y8sos")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Cooking UI/Cooking Window/HSplitContainer"]
+layout_mode = 2
+split_offset = 350
+
+[node name="Food" type="Panel" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="SelectedIngredients" type="ItemList" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k81ad")
+icon_scale = 0.5
+script = ExtResource("2_np1d6")
+
+[node name="Player" type="Node" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.807436, -3.65839)
+mesh = SubResource("CapsuleMesh_q0dyx")
+skeleton = NodePath("../..")

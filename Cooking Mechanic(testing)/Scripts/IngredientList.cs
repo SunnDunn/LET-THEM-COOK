@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class IngredientList : ItemList {
 	private Texture2D _icon = GD.Load<Texture2D>("res://icon.svg");
@@ -11,10 +12,19 @@ public partial class IngredientList : ItemList {
 	public List<string> vegetables {
 		get { return this._vegetables; }
 	}
+
+	private Dictionary<string, int> _ingredientAmount = new Dictionary<string, int>();
+
 	private void _ready() {
 		PlayerIngredients playerIngredients = GetNode<PlayerIngredients>($"../../PlayerIngerdients");
 
 		playerIngredients.Connect("updateList", new Callable(this, nameof(UpdateIngredientList)));
+
+		//initialize dictionary of ingredient amount
+		this._ingredientAmount.Add("Radish", 0);
+		this._ingredientAmount.Add("Bok Choy", 0);
+		this._ingredientAmount.Add("Cabbage", 0);
+		this._ingredientAmount.Add("Lettuce", 0);
 	}
 
 	private void UpdateIngredientList(string name, int count, int totalCount) {
@@ -47,5 +57,16 @@ public partial class IngredientList : ItemList {
 			this._vegetables.Add(name);
 		}
 		
+	}
+	
+	private void _on_cook_button_pressed(){
+		if (this._vegetables == null) return;
+		
+		foreach (string ing in this._vegetables){
+			GD.Print("Adding " + ing);
+			this._ingredientAmount[ing]++;
+		}
+
+		GD.Print("Bok Choy: " + this._ingredientAmount["Bok Choy"]);
 	}
 }

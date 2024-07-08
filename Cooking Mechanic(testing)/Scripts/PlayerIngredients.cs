@@ -49,7 +49,7 @@ public partial class PlayerIngredients : Godot.ItemList {
 			this._clickCounts[index] = this._clickCounts[index] + 1;
 	
 			 this.UpdateText(name, index);
-
+		  
 			GD.Print($"Ingredient {name} added {this._clickCounts[index]} times.");
 
 		} 
@@ -61,7 +61,7 @@ public partial class PlayerIngredients : Godot.ItemList {
 
 			GD.Print($"Ingredient {name} subtracted {_clickCounts[index]} times.");
 		}
-		/*return if anything else*/
+		/* return if anything else */
 		else{
 			return;
 		}

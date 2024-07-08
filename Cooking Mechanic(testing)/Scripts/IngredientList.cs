@@ -9,6 +9,7 @@ public partial class IngredientList : ItemList {
 
 	/*a list of strings that stores the order of the vegetables (name only) with a getter*/
 	private List<string> _vegetables = new List<string>();
+	private List<RecipeVegetable>  _recipeVegetables = new List<RecipeVegetable>();
 	public List<string> vegetables {
 		get { return this._vegetables; }
 	}
@@ -30,10 +31,15 @@ public partial class IngredientList : ItemList {
 	private void UpdateIngredientList(string name, int count, int totalCount) {
 		bool found = false;
 
-		if(this.ItemCount == 0) {   /*since the list is empty, push the first item first before entering the for loop*/
-			this.AddItem(name, this._icon, true);
-			this._vegetables.Add(name);
-		}
+		RecipeVegetable vegetable = new RecipeVegetable();
+		vegetable.vegName = name;
+		vegetable.vegAmount = count;
+
+		//if(this.ItemCount == 0) {   /*since the list is empty, push the first item first before entering the for loop*/
+		//	this.AddItem(name, this._icon, true);
+		//	this._vegetables.Add(name);
+		//	this._recipeVegetables.Add(vegetable);
+		//}
 
 		/* iterate through the entire list first before deciding to add the vegetable. if found, don't add*/
 		for(int i = 0; i < this.ItemCount; i++) {
@@ -45,7 +51,9 @@ public partial class IngredientList : ItemList {
 					this._vegetables.Remove(name);
 				}
 				else {
+					name = name + " x" + vegetable.vegAmount;
 					this.SetItemText(i, name);
+					this._recipeVegetables[i] = vegetable;
 					
 				}
 				found = true;
@@ -53,20 +61,26 @@ public partial class IngredientList : ItemList {
 		}
 
 		if(!found) {
+			name = name + " x" + vegetable.vegAmount;
 			this.AddItem(name, this._icon, true);
 			this._vegetables.Add(name);
+			this._recipeVegetables.Add(vegetable);
 		}
 		
 	}
 	
 	private void _on_cook_button_pressed(){
 		if (this._vegetables == null) return;
-		
-		foreach (string ing in this._vegetables){
-			GD.Print("Adding " + ing);
-			this._ingredientAmount[ing]++;
-		}
 
-		GD.Print("Bok Choy: " + this._ingredientAmount["Bok Choy"]);
+		for(int i = 0; i < this._recipeVegetables.Count; i++) {
+			GD.Print($"Adding {this._recipeVegetables[i].vegName} x{this._recipeVegetables[i].vegAmount}");
+		}
+		
+		//foreach (string ing in this._vegetables){
+		//	GD.Print("Adding " + ing);
+		//	this._ingredientAmount[ing]++;
+		//}
+
+		//GD.Print("Bok Choy: " + this._ingredientAmount["Bok Choy"]);
 	}
 }

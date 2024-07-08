@@ -50,7 +50,7 @@ public partial class PlayerIngredients : Godot.ItemList {
 	
 			 this.UpdateText(name, index);
 		  
-			GD.Print($"Ingredient {name} added {this._clickCounts[index]} times.");
+			//GD.Print($"Ingredient {name} added {this._clickCounts[index]} times.");
 
 		} 
 		/* for deselecting with right mouse button AND if click counter is less than the amount*/
@@ -59,7 +59,7 @@ public partial class PlayerIngredients : Godot.ItemList {
 			
 			this.UpdateText(name, index);
 
-			GD.Print($"Ingredient {name} subtracted {_clickCounts[index]} times.");
+			//GD.Print($"Ingredient {name} subtracted {_clickCounts[index]} times.");
 		}
 		/* return if anything else */
 		else{

@@ -89,6 +89,14 @@ dragger_visibility = 2
 [node name="Food" type="Panel" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer"]
 layout_mode = 2
 
+[node name="SuccessLabel" type="Label" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/Food"]
+layout_mode = 0
+offset_right = 539.0
+offset_bottom = 320.0
+text = "Success"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HSplitContainer" type="HSplitContainer" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer"]
 layout_mode = 2
 split_offset = 265
@@ -104,11 +112,12 @@ text = "Reset"
 [node name="HBoxContainer" type="HBoxContainer" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/HSplitContainer"]
 layout_mode = 2
 
-[node name="SelectedIngredients" type="ItemList" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer"]
+[node name="SelectedIngredients" type="ItemList" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer" node_paths=PackedStringArray("_successLabel")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_k81ad")
 icon_scale = 0.5
 script = ExtResource("2_np1d6")
+_successLabel = NodePath("../VSplitContainer/Food/SuccessLabel")
 
 [node name="Player" type="Node" parent="."]
 
@@ -119,3 +128,4 @@ skeleton = NodePath("../..")
 
 [connection signal="pressed" from="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/HSplitContainer/CookButton" to="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/SelectedIngredients" method="_on_cook_button_pressed"]
 [connection signal="pressed" from="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/HSplitContainer/ResetButton" to="Cooking UI/Cooking Window/HSplitContainer/PlayerIngerdients" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/HSplitContainer/ResetButton" to="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/SelectedIngredients" method="_on_reset_button_pressed"]

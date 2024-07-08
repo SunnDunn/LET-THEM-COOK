@@ -13,18 +13,14 @@ public partial class IngredientList : ItemList {
 		get { return this._vegetables; }
 	}
 
-	private Dictionary<string, int> _ingredientAmount = new Dictionary<string, int>();
+	[Export] private Label _successLabel;
 
 	private void _ready() {
 		PlayerIngredients playerIngredients = GetNode<PlayerIngredients>($"../../PlayerIngerdients");
 
 		playerIngredients.Connect("updateList", new Callable(this, nameof(UpdateIngredientList)));
 
-		//initialize dictionary of ingredient amount
-		this._ingredientAmount.Add("Radish", 0);
-		this._ingredientAmount.Add("Bok Choy", 0);
-		this._ingredientAmount.Add("Cabbage", 0);
-		this._ingredientAmount.Add("Lettuce", 0);
+		this._successLabel.Text = "";
 	}
 
 	private void UpdateIngredientList(string name, int count, int totalCount) {
@@ -66,8 +62,35 @@ public partial class IngredientList : ItemList {
 	private void _on_cook_button_pressed(){
 		if (this._vegetables == null) return;
 
-		for(int i = 0; i < this._vegetables.Count; i++) {
-			GD.Print($"Adding {this._vegetables[i].vegName} x{this._vegetables[i].vegAmount}");
+		// for(int i = 0; i < this._vegetables.Count; i++) {
+		// 	GD.Print($"Adding {this._vegetables[i].vegName} x{this._vegetables[i].vegAmount}");
+		// }
+
+		if (this._vegetables.Count == 1){
+			this._successLabel.Text = "Success";
+			return;
 		}
+
+		float totalVeggies = 0;
+		foreach (RecipeVegetable veggie in this._vegetables){
+			totalVeggies += veggie.vegAmount;
+		}
+
+		//GD.Print("Total veggies: " + totalVeggies);
+
+		bool cookSuccessfull = true;
+		foreach (RecipeVegetable veggie in this._vegetables){
+			//GD.Print(veggie.vegName + " x" + veggie.vegAmount);
+			if (veggie.vegAmount > (totalVeggies / 2) + 0.5f) cookSuccessfull = false;
+		}
+
+		if (cookSuccessfull) this._successLabel.Text = "Success";
+		else this._successLabel.Text = "FAILURE!";
+
+	}
+
+	private void _on_reset_button_pressed(){
+		this._successLabel.Text = "";
+		this._vegetables.Clear();
 	}
 }

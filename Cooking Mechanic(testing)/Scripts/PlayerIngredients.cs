@@ -70,7 +70,7 @@ public partial class PlayerIngredients : Godot.ItemList {
 	private List<RecipeVegetable> addToList() {
 		RecipeVegetable veg = new RecipeVegetable();
 
-		veg.vegName = "Bok Choy";
+		veg.vegName = "BokChoy";
 		veg.vegAmount = 5;
 		vegList.Add(veg);
 

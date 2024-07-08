@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Xml.Linq;
 
@@ -76,19 +77,20 @@ public partial class PlayerIngredients : Godot.ItemList {
 		}
 	}
 	private void _on_cook_button_pressed() {
-		for (int i = 0; i < this._vegList.Count; i++) {
-			this._vegList[i].vegAmount -= this._clickCounts[i];
-			this._clickCounts[i] = 0;
+		for (int j = 0; j < 2; j++) {
+			for (int i = 0; i < this._vegList.Count; i++) {
+				this._vegList[i].vegAmount -= this._clickCounts[i];
+				this._clickCounts[i] = 0;
 
-			if (this._vegList[i].vegAmount == 0) {
-				this._vegList.RemoveAt(i);
-				this._clickCounts.RemoveAt(i);
-				this.RemoveItem(i);
+				if (this._vegList[i].vegAmount == 0) {
+					this._vegList.RemoveAt(i);
+					this._clickCounts.RemoveAt(i);
+					this.RemoveItem(i);
+				}
+				else {
+					this.UpdateText(this._vegList[i].vegName, i);
+				}
 			}
-			else {
-				this.UpdateText(this._vegList[i].vegName, i);
-			}
-			
 		}
 	}
 	private List<RecipeVegetable> addToList() {

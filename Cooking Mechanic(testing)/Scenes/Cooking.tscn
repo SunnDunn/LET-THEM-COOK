@@ -97,9 +97,9 @@ text = "Success"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer"]
+[node name="HSplitContainer" type="HBoxContainer" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer"]
 layout_mode = 2
-split_offset = 265
+alignment = 1
 
 [node name="CookButton" type="Button" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/HSplitContainer"]
 layout_mode = 2
@@ -108,9 +108,6 @@ text = "Cook"
 [node name="ResetButton" type="Button" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/HSplitContainer"]
 layout_mode = 2
 text = "Reset"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/HSplitContainer"]
-layout_mode = 2
 
 [node name="SelectedIngredients" type="ItemList" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer" node_paths=PackedStringArray("_successLabel")]
 layout_mode = 2
@@ -126,6 +123,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.807436, -3.65839)
 mesh = SubResource("CapsuleMesh_q0dyx")
 skeleton = NodePath("../..")
 
+[connection signal="item_selected" from="Cooking UI/Cooking Window/HSplitContainer/PlayerIngerdients" to="Cooking UI/Cooking Window/HSplitContainer/PlayerIngerdients" method="_on_item_selected"]
+[connection signal="updateList" from="Cooking UI/Cooking Window/HSplitContainer/PlayerIngerdients" to="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/SelectedIngredients" method="_on_player_ingerdients_update_list"]
+[connection signal="pressed" from="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/HSplitContainer/CookButton" to="Cooking UI/Cooking Window/HSplitContainer/PlayerIngerdients" method="_on_cook_button_pressed"]
 [connection signal="pressed" from="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/HSplitContainer/CookButton" to="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/SelectedIngredients" method="_on_cook_button_pressed"]
 [connection signal="pressed" from="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/HSplitContainer/ResetButton" to="Cooking UI/Cooking Window/HSplitContainer/PlayerIngerdients" method="_on_reset_button_pressed"]
 [connection signal="pressed" from="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/HSplitContainer/ResetButton" to="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/SelectedIngredients" method="_on_reset_button_pressed"]

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 public partial class IngredientList : ItemList {
+	
 	private Texture2D _icon = GD.Load<Texture2D>("res://icon.svg");
-
 
 	/*a list of vegettables that stores the order with a getter*/
 	private List<RecipeVegetable> _vegetables = new List<RecipeVegetable>();
+	
 	public List<RecipeVegetable> vegetables {
 		get { return this._vegetables; }
 	}
@@ -16,28 +17,25 @@ public partial class IngredientList : ItemList {
 	[Export] private Label _successLabel;
 
 	private void _ready() {
-		PlayerIngredients playerIngredients = GetNode<PlayerIngredients>($"../../PlayerIngerdients");
-
-		playerIngredients.Connect("updateList", new Callable(this, nameof(UpdateIngredientList)));
-
 		this._successLabel.Text = "";
 	}
 
-	private void UpdateIngredientList(string name, int count, int totalCount) {
+
+	private void _on_player_ingerdients_update_list(string name, long count, long totalCount) {
 		bool found = false;
 
 		RecipeVegetable vegetable = new RecipeVegetable();
 		vegetable.vegName = name;
-		vegetable.vegAmount = count;
+		vegetable.vegAmount = (int)count;
 
 		/* iterate through the entire list first before deciding to add the vegetable. if found, don't add*/
-		for(int i = 0; i < this.ItemCount; i++) {
+		for (int i = 0; i < this.ItemCount; i++) {
 			string itemName = this.GetItemText(i);
 			string[] cleaned = itemName.Split(new char[] { ' ' });
 			itemName = cleaned[0];
 
 			if (itemName == name) {
-				if(count == 0) {        /*remove from itemlist and the from the list defined in this code*/
+				if (count == 0) {        /*remove from itemlist and the from the list defined in this code*/
 					this.RemoveItem(i);
 					this._vegetables.Remove(this._vegetables[i]);
 				}
@@ -45,20 +43,19 @@ public partial class IngredientList : ItemList {
 					name = name + " x" + vegetable.vegAmount;
 					this.SetItemText(i, name);
 					this._vegetables[i] = vegetable;
-					
+
 				}
 				found = true;
 			}
 		}
 
-		if(!found) {
+		if (!found && count != 0) {
 			name = name + " x" + vegetable.vegAmount;
 			this.AddItem(name, this._icon, true);
 			this._vegetables.Add(vegetable);
 		}
-		
+
 	}
-	
 	private void _on_cook_button_pressed(){
 		if (this._vegetables == null) return;
 
@@ -94,3 +91,5 @@ public partial class IngredientList : ItemList {
 		this._vegetables.Clear();
 	}
 }
+
+

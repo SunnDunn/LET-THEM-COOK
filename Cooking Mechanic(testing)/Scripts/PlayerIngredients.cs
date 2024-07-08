@@ -32,41 +32,65 @@ public partial class PlayerIngredients : Godot.ItemList {
 			this.AddItem(name, this._icon, true);
 		}
 
-		for(int i = 0; i < vegList.Count; i++) {
+		for (int i = 0; i < vegList.Count; i++) {
 			this._clickCounts.Add(0);
 		}
 
-		this.Connect("item_clicked", new Callable(this, nameof(OnItemClicked))); /*connects a signal to a callable (make the function callable)
-																				   so that every time the siglan is active, it calls the function*/
 		this._initVegList = this._vegList;
 	}
+	private void _on_item_selected(long i) {
+		int index = (int)i;
 
-	private void OnItemClicked(int index, Vector2 at_position, int button_index) {
 		string name = this.GetItemText(index);
 
 		/* for selecting with left mouse button*/
-		if (button_index == 1 && this._clickCounts[index] < this._vegList[index].vegAmount) {
+		if (Input.IsMouseButtonPressed(MouseButton.Left) && this._clickCounts[index] < this._vegList[index].vegAmount) {
 			this._clickCounts[index] = this._clickCounts[index] + 1;
-	
-			 this.UpdateText(name, index);
-		  
+
+			this.UpdateText(name, index);
+
 			//GD.Print($"Ingredient {name} added {this._clickCounts[index]} times.");
 
-		} 
+		}
 		/* for deselecting with right mouse button AND if click counter is less than the amount*/
-		else if(button_index == 2 && this._clickCounts[index] > 0) {
+		else if (Input.IsMouseButtonPressed(MouseButton.Right) && this._clickCounts[index] > 0) {
 			this._clickCounts[index] = this._clickCounts[index] - 1;
-			
+
 			this.UpdateText(name, index);
 
 			//GD.Print($"Ingredient {name} subtracted {_clickCounts[index]} times.");
 		}
 		/* return if anything else */
-		else{
+		else {
 			return;
 		}
 	}
+	public void _on_reset_button_pressed() {
+		for (int i = 0; i < this._vegList.Count; i++) {
+			if (this._clickCounts[i] != 0) {
+				this._clickCounts[i] = 0;
 
+				this.UpdateText(this._vegList[i].vegName, i);
+				
+			}
+		}
+	}
+	private void _on_cook_button_pressed() {
+		for (int i = 0; i < this._vegList.Count; i++) {
+			this._vegList[i].vegAmount -= this._clickCounts[i];
+			this._clickCounts[i] = 0;
+
+			if (this._vegList[i].vegAmount == 0) {
+				this._vegList.RemoveAt(i);
+				this._clickCounts.RemoveAt(i);
+				this.RemoveItem(i);
+			}
+			else {
+				this.UpdateText(this._vegList[i].vegName, i);
+			}
+			
+		}
+	}
 	private List<RecipeVegetable> addToList() {
 		RecipeVegetable veg = new RecipeVegetable();
 
@@ -97,6 +121,7 @@ public partial class PlayerIngredients : Godot.ItemList {
 
 	private void UpdateText(string name, int index){
 		int amount;
+		
 		EmitSignal(SignalName.updateList, this._vegList[index].vegName, this._clickCounts[index], this._vegList[index].vegAmount);  /*emit signal to selected ingredient list*/
 
 		amount = this._vegList[index].vegAmount - this._clickCounts[index]; 
@@ -105,15 +130,8 @@ public partial class PlayerIngredients : Godot.ItemList {
 		this.SetItemText(index, name);
 	}
 
-	public void _on_reset_button_pressed(){
-		for (int i = 0; i < this._vegList.Count; i++) {
-			if (this._clickCounts[i] != 0) { 
-				this._clickCounts[i] = 0;
-
-				this.UpdateText(this._vegList[i].vegName, i);
-				
-			}
-		}
-	}
-
 }
+
+
+
+

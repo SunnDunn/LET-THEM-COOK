@@ -65,6 +65,7 @@ public partial class IngredientList : ItemList {
 
 		if (this._vegetables.Count == 1){
 			this._successLabel.Text = "Success";
+			this.ClearText();
 			return;
 		}
 
@@ -83,11 +84,16 @@ public partial class IngredientList : ItemList {
 
 		if (cookSuccessfull) this._successLabel.Text = "Success";
 		else this._successLabel.Text = "FAILURE!";
-
+		this.ClearText();
 	}
 
 	private void _on_reset_button_pressed(){
 		this._successLabel.Text = "";
+		this.ClearText();
+	}
+
+	private void ClearText(){
+		this.Clear();
 		this._vegetables.Clear();
 	}
 }

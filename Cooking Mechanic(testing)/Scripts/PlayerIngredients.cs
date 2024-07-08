@@ -99,17 +99,21 @@ public partial class PlayerIngredients : Godot.ItemList {
 		int amount;
 		EmitSignal(SignalName.updateList, this._vegList[index].vegName, this._clickCounts[index], this._vegList[index].vegAmount);  /*emit signal to selected ingredient list*/
 
-		amount = this._vegList[index].vegAmount - this._clickCounts[index];
+		amount = this._vegList[index].vegAmount - this._clickCounts[index]; 
 
 		name = this._vegList[index].vegName + " x" + amount;
 		this.SetItemText(index, name);
 	}
 
 	public void _on_reset_button_pressed(){
-		this._vegList = this._initVegList;
+		for (int i = 0; i < this._vegList.Count; i++) {
+			if (this._clickCounts[i] != 0) { 
+				this._clickCounts[i] = 0;
 
-		//reset the display text and values
-
+				this.UpdateText(this._vegList[i].vegName, i);
+				
+			}
+		}
 	}
 
 }

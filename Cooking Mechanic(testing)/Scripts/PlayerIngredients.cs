@@ -1,11 +1,13 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Xml.Linq;
 
 public partial class PlayerIngredients : Godot.ItemList {
+	
 
 	/*User defined signal for updating the (ItemList)SelectedIngredients*/
 	[Signal]
@@ -48,8 +50,6 @@ public partial class PlayerIngredients : Godot.ItemList {
 		if (Input.IsMouseButtonPressed(MouseButton.Left) && this._clickCounts[index] < this._vegList[index].vegAmount) {
 			this._clickCounts[index] = this._clickCounts[index] + 1;
 
-			this.UpdateText(name, index);
-
 			//GD.Print($"Ingredient {name} added {this._clickCounts[index]} times.");
 
 		}
@@ -57,14 +57,12 @@ public partial class PlayerIngredients : Godot.ItemList {
 		else if (Input.IsMouseButtonPressed(MouseButton.Right) && this._clickCounts[index] > 0) {
 			this._clickCounts[index] = this._clickCounts[index] - 1;
 
-			this.UpdateText(name, index);
 
 			//GD.Print($"Ingredient {name} subtracted {_clickCounts[index]} times.");
 		}
-		/* return if anything else */
-		else {
-			return;
-		}
+
+		this.UpdateText(name, index);
+		EmitSignal(SignalName.updateList, this._vegList[index].vegName, this._clickCounts[index], this._vegList[index].vegAmount);  /*emit signal to selected ingredient list*/
 	}
 	public void _on_reset_button_pressed() {
 		for (int i = 0; i < this._vegList.Count; i++) {
@@ -72,7 +70,8 @@ public partial class PlayerIngredients : Godot.ItemList {
 				this._clickCounts[i] = 0;
 
 				this.UpdateText(this._vegList[i].vegName, i);
-				
+				EmitSignal(SignalName.updateList, this._vegList[i].vegName, this._clickCounts[i], this._vegList[i].vegAmount);  /*emit signal to selected ingredient list*/
+	
 			}
 		}
 	}
@@ -124,8 +123,6 @@ public partial class PlayerIngredients : Godot.ItemList {
 	private void UpdateText(string name, int index){
 		int amount;
 		
-		EmitSignal(SignalName.updateList, this._vegList[index].vegName, this._clickCounts[index], this._vegList[index].vegAmount);  /*emit signal to selected ingredient list*/
-
 		amount = this._vegList[index].vegAmount - this._clickCounts[index]; 
 
 		name = this._vegList[index].vegName + " x" + amount;
@@ -133,7 +130,3 @@ public partial class PlayerIngredients : Godot.ItemList {
 	}
 
 }
-
-
-
-

@@ -38,12 +38,13 @@ public partial class IngredientList : ItemList {
 				if (count == 0) {        /*remove from itemlist and the from the list defined in this code*/
 					this.RemoveItem(i);
 					this._vegetables.Remove(this._vegetables[i]);
+					//GD.Print("Removed an item");
 				}
 				else {
 					name = name + " x" + vegetable.vegAmount;
 					this.SetItemText(i, name);
 					this._vegetables[i] = vegetable;
-
+					//GD.Print("Adding existing item");
 				}
 				found = true;
 			}
@@ -53,24 +54,28 @@ public partial class IngredientList : ItemList {
 			name = name + " x" + vegetable.vegAmount;
 			this.AddItem(name, this._icon, true);
 			this._vegetables.Add(vegetable);
+			//GD.Print("Adding new item");
 		}
 
 	}
 	private void _on_cook_button_pressed(){
-		if (this._vegetables == null) return;
-
-		// for(int i = 0; i < this._vegetables.Count; i++) {
-		// 	GD.Print($"Adding {this._vegetables[i].vegName} x{this._vegetables[i].vegAmount}");
-		// }
+		if (this._vegetables == null){
+			//GD.Print("Vegetable list is null!");
+			this.ClearText();
+			return;
+		}
 
 		if (this._vegetables.Count == 1){
+			//GD.Print("Only One");
 			this._successLabel.Text = "Success";
 			this.ClearText();
 			return;
 		}
 
+		//GD.Print("Number of vegetable types: " + this._vegetables.Count);
 		float totalVeggies = 0;
 		foreach (RecipeVegetable veggie in this._vegetables){
+			//GD.Print(veggie.vegName + " x" + veggie.vegAmount);
 			totalVeggies += veggie.vegAmount;
 		}
 

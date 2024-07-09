@@ -86,13 +86,8 @@ layout_mode = 2
 split_offset = 500
 dragger_visibility = 2
 
-[node name="Food" type="Panel" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer"]
+[node name="SuccessLabel" type="Label" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer"]
 layout_mode = 2
-
-[node name="SuccessLabel" type="Label" parent="Cooking UI/Cooking Window/HSplitContainer/VSplitContainer/VSplitContainer/Food"]
-layout_mode = 0
-offset_right = 539.0
-offset_bottom = 320.0
 text = "Success"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -114,7 +109,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_k81ad")
 icon_scale = 0.5
 script = ExtResource("2_np1d6")
-_successLabel = NodePath("../VSplitContainer/Food/SuccessLabel")
+_successLabel = NodePath("../VSplitContainer/SuccessLabel")
 
 [node name="Player" type="Node" parent="."]
 

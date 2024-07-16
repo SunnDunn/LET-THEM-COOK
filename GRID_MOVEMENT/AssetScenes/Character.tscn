@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwhqry7edjspm"]
+[gd_scene load_steps=6 format=3 uid="uid://bwhqry7edjspm"]
 
-[ext_resource type="Script" path="res://GRID_MOVEMENT/Scripts/Character.gd" id="1_1bgca"]
+[ext_resource type="Script" path="res://GRID_MOVEMENT/Scripts/UnitWPMv2.gd" id="1_bmouy"]
+[ext_resource type="PackedScene" uid="uid://dinmetjyx36v8" path="res://Scenes/Components/unit_turn_handler.tscn" id="4_eeh7b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unw0v"]
 albedo_color = Color(0.196078, 1, 1, 1)
@@ -13,11 +14,13 @@ material = SubResource("StandardMaterial3D_unw0v")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aum2w"]
 
-[node name="Character" type="CharacterBody3D"]
-script = ExtResource("1_1bgca")
+[node name="Character" type="CharacterBody3D" groups=["FriendlyUnit"]]
+script = ExtResource("1_bmouy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_yjt67")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_aum2w")
+
+[node name="UnitTurnHandler" parent="." instance=ExtResource("4_eeh7b")]

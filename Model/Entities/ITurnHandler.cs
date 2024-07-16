@@ -1,10 +1,11 @@
 using Godot;
 using System;
+using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 
 public partial class ITurnHandler : Node
 {
-	public bool canMove = false;
+	[Export] public bool canMove = false;
 
 	private TurnManager _turnManager;
 

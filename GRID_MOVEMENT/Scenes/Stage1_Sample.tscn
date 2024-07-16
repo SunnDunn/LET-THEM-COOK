@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://byqw4g3j4ipfx"]
+[gd_scene load_steps=7 format=3 uid="uid://byqw4g3j4ipfx"]
 
 [ext_resource type="Environment" uid="uid://bkoa6v5mymq2s" path="res://GRID_MOVEMENT/Assets/Environments/Sunset1_ENV.tres" id="1_5jgpk"]
 [ext_resource type="PackedScene" uid="uid://bwhqry7edjspm" path="res://GRID_MOVEMENT/AssetScenes/Character.tscn" id="2_gxhf0"]
 [ext_resource type="MeshLibrary" uid="uid://b0tdpovnf6a3h" path="res://GRID_MOVEMENT/Assets/3D_Models/Platform1_Mesh.tres" id="3_x0xbq"]
 [ext_resource type="PackedScene" uid="uid://b363vxt8gr7a3" path="res://GRID_MOVEMENT/AssetScenes/Enemy.tscn" id="4_6iimy"]
 [ext_resource type="Script" path="res://GRID_MOVEMENT/Scripts/Enemy.gd" id="5_6rpj7"]
+[ext_resource type="PackedScene" uid="uid://50iccafilxgh" path="res://GRID_MOVEMENT/Scenes/TileTargetPos.tscn" id="6_w8wqy"]
 
 [node name="Stage1Sample" type="Node3D"]
 
@@ -22,6 +23,7 @@ shadow_enabled = true
 
 [node name="OverheadCamera" type="Camera3D" parent="Essentials"]
 transform = Transform3D(-1, -7.92319e-08, 3.69465e-08, 0, 0.422618, 0.906308, -8.74228e-08, 0.906308, -0.422618, 0, 15, -10)
+current = true
 
 [node name="GridMap" type="GridMap" parent="Essentials"]
 mesh_library = ExtResource("3_x0xbq")
@@ -43,6 +45,16 @@ script = ExtResource("5_6rpj7")
 [node name="Enemy3" parent="Enemies" instance=ExtResource("4_6iimy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 7)
 script = ExtResource("5_6rpj7")
+
+[node name="MoveablePositions" type="Node3D" parent="."]
+
+[node name="TileTargetPos" parent="MoveablePositions" node_paths=PackedStringArray("friendlyUnit") instance=ExtResource("6_w8wqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 3)
+friendlyUnit = NodePath("../../Character")
+
+[node name="TileTargetPos2" parent="MoveablePositions" node_paths=PackedStringArray("friendlyUnit") instance=ExtResource("6_w8wqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -3)
+friendlyUnit = NodePath("../../Character")
 
 [connection signal="body_entered" from="Enemies/Enemy" to="Enemies/Enemy" method="_on_body_entered"]
 [connection signal="body_entered" from="Enemies/Enemy2" to="Enemies/Enemy2" method="_on_body_entered"]

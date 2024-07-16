@@ -25,6 +25,8 @@ func _changeSceneToLoad():
 	
 func _on_body_entered(body):
 	queue_free()
-	_changeSceneToLoad()
+	#The progress bar of the enemy will reduce to 0
+	
+	#_changeSceneToLoad()
 	get_tree().change_scene_to_packed(nextScene)
 	

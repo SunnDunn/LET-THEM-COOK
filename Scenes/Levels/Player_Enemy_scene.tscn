@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://mwet63u3udsp"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/Player_Enemy_scene.cs" id="1_1j24t"]
+[ext_resource type="PackedScene" uid="uid://cc2slww1m26ad" path="res://Scenes/UI/turn_ui.tscn" id="1_rk4qy"]
+[ext_resource type="PackedScene" uid="uid://dng3sjlqdkfnx" path="res://Scenes/Entities/test_enemy.tscn" id="2_1kj84"]
+[ext_resource type="PackedScene" uid="uid://b4gqe4f1loub6" path="res://Scenes/Entities/test_player.tscn" id="3_wpmy2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u6ru"]
+bg_color = Color(0.889229, 0.771144, 0.678986, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rx4nu"]
+bg_color = Color(0.154306, 0.706713, 0.4492, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="TestScene" type="Node2D"]
+position = Vector2(386, 545)
+script = ExtResource("1_1j24t")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TurnUI" parent="Camera2D" instance=ExtResource("1_rk4qy")]
+
+[node name="test_enemy" parent="Camera2D" instance=ExtResource("2_1kj84")]
+position = Vector2(-262, -162)
+
+[node name="test_enemy2" parent="." instance=ExtResource("2_1kj84")]
+position = Vector2(-130, 76)
+
+[node name="test_enemy3" parent="." instance=ExtResource("2_1kj84")]
+position = Vector2(-397, 177)
+
+[node name="Test_Player" parent="." instance=ExtResource("3_wpmy2")]
+position = Vector2(92, -190)
+
+[node name="Test_Player2" parent="." instance=ExtResource("3_wpmy2")]
+position = Vector2(290, -42)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -331.0
+offset_top = -1.0
+offset_right = -231.0
+offset_bottom = 49.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8u6ru")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rx4nu")
+step = 1.0
+value = 20.0
+show_percentage = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -330.0
+offset_right = -330.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionPanel" type="Panel" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -323.0
+offset_right = -535.0
+offset_bottom = -283.0
+grow_vertical = 2
+scale = Vector2(28.76, 1.38392)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ActionPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

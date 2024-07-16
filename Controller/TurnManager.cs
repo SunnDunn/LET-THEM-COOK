@@ -12,6 +12,8 @@ public partial class TurnManager : Node
 	public int _friendlyEndTurnTracker = 0;
 	public int _enemyEndTurnTracker = 0;
 	
+	public Node CurrentUnitTurn;
+
 	public void TurnChanger(bool isStart)
 	{
 		Array<Node> currentUnits = this._friendlyUnits;;
@@ -51,10 +53,13 @@ public partial class TurnManager : Node
 		this._enemyUnits = GetTree().GetNodesInGroup("EnemyUnit");
 
 		this.TurnChanger(true);
+
+		this.CurrentUnitTurn = this._friendlyUnits[0];
 	}
 
 	public override void _Process(double _delta)
 	{
+		//GD.Print("Current turn: " + this.CurrentTurn);
 		//GD.Print("Friendly units moved: " + this._friendlyEndTurnTracker);
 		switch (this.CurrentTurn)
 		{
@@ -65,6 +70,7 @@ public partial class TurnManager : Node
 					this._friendlyEndTurnTracker = 0;
 					this.CurrentTurn = "Enemy";
 					this.TurnChanger(true);
+					this.CurrentUnitTurn = this._enemyUnits[0];
 				}
 				break;
 			case "Enemy":
@@ -74,6 +80,7 @@ public partial class TurnManager : Node
 					this._enemyEndTurnTracker = 0;
 					this.CurrentTurn = "Player";
 					this.TurnChanger(true);
+					this.CurrentUnitTurn = this._friendlyUnits[0];
 				}
 				break;
 		}

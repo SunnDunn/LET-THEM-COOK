@@ -7,8 +7,11 @@ const ROT_SPEED = 2
 var sceneNum = 1
 var nextScene 
 
+@onready var turnHandler = $UnitTurnHandler
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	input_ray_pickable = true
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,3 +31,10 @@ func _on_body_entered(body):
 	_changeSceneToLoad()
 	get_tree().change_scene_to_packed(nextScene)
 	
+func _input_event(camera, event, position, normal, shape_idx):
+	if (!turnHandler.canMove):
+		return
+	if (event.is_pressed()):
+		print("Clicked!")
+		turnHandler.EndTurn()
+	return

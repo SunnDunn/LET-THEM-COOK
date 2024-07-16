@@ -9,10 +9,15 @@ func _ready():
 	meshInst = $MeshInstance3D
 	return
 
+func _process(delta):
+	if (TurnManager.CurrentTurn == "Player"):
+		friendlyUnit = TurnManager.CurrentUnitTurn
+	else:
+		friendlyUnit = null
+
 func _input_event(camera, event, position, normal, shape_idx):
-	if (event.is_pressed()):
+	if (event.is_pressed() && friendlyUnit != null):
 		friendlyUnit.target_pos = self.position
-		print("Success!")
 	return
 
 

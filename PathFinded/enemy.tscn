@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bewcufirbc62o"]
+
+[ext_resource type="Script" path="res://PathFinded/enemy.gd" id="1_u4ty6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qssr3"]
+albedo_color = Color(1, 0.223529, 0.172549, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xw6x0"]
+material = SubResource("StandardMaterial3D_qssr3")
+radius = 0.25
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7our0"]
+points = PackedVector3Array(0.273809, 0.793527, 0.0833147, -0.265873, 0.825347, -0.107075, 0.115064, -0.793527, -0.265873, 0.0833147, -0.793527, 0.273809, -0.202322, 0.793527, 0.210311, 0.115064, 0.793527, -0.265873, 0.273809, -0.793527, 0.0833147, -0.170626, -0.825347, -0.234124, 0.0833147, 0.793527, 0.273809, 0.210311, -0.793527, -0.202322, -0.202322, -0.793527, 0.210311, -0.107075, 0.825347, -0.265873, 0.109889, 0.968551, 0.0493483, -0.0414246, -0.969899, 0.110036, 0.210311, 0.793527, -0.202322, -0.265873, -0.793527, 0.115064, -0.265873, -0.825347, -0.107075, -0.265873, 0.793527, 0.115064, 0.0494977, -0.97174, -0.10225, -0.10225, 0.97174, 0.0494977, -0.107075, -0.825347, -0.265873, -0.0415802, 0.973224, -0.102413, -0.234124, 0.825347, -0.170626, 0.109889, -0.968552, 0.0493484, -0.102413, -0.973224, -0.0415802, 0.138991, 0.930166, -0.100994, -0.0407379, 0.895386, 0.197993, -0.170626, 0.825347, -0.234124, -0.234124, -0.825347, -0.170626, 0.197993, -0.895386, -0.0407379, -0.16162, -0.933293, 0.0491104, 0.108526, 0.926139, 0.138406)
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_u4ty6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0127704, -0.0225748, 0.00142145)
+mesh = SubResource("CapsuleMesh_xw6x0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0127704, -0.0225748, 0.00142145)
+shape = SubResource("ConvexPolygonShape3D_7our0")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+height = 0.1

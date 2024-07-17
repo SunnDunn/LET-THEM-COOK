@@ -1,12 +1,30 @@
 [gd_scene load_steps=11 format=3 uid="uid://byqw4g3j4ipfx"]
 
 [ext_resource type="Environment" uid="uid://bkoa6v5mymq2s" path="res://GRID_MOVEMENT/Assets/Environments/Sunset1_ENV.tres" id="1_5jgpk"]
-[ext_resource type="Script" path="res://GRID_MOVEMENT/Scripts/StageScript.cs" id="1_a6x1v"]
 [ext_resource type="PackedScene" uid="uid://bwhqry7edjspm" path="res://GRID_MOVEMENT/AssetScenes/Character.tscn" id="2_gxhf0"]
 [ext_resource type="MeshLibrary" uid="uid://b0tdpovnf6a3h" path="res://GRID_MOVEMENT/Assets/3D_Models/Platform1_Mesh.tres" id="3_x0xbq"]
 [ext_resource type="PackedScene" uid="uid://b363vxt8gr7a3" path="res://GRID_MOVEMENT/AssetScenes/Enemy.tscn" id="4_6iimy"]
 [ext_resource type="Script" path="res://GRID_MOVEMENT/Scripts/Enemy.gd" id="5_6rpj7"]
 [ext_resource type="Script" path="res://GRID_MOVEMENT/Scripts/StageScript.gd" id="7_occp8"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_j8f4f"]
+script/source = "using Godot;
+using System;
+
+public partial class StageScript : Node3D
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		$PlayerAction.hide();
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bn0jh"]
 bg_color = Color(0.880907, 0.294552, 0.33249, 1)
@@ -18,7 +36,7 @@ bg_color = Color(4.42803e-06, 0.70711, 0.511288, 1)
 bg_color = Color(0.788865, 0.529221, 0.402708, 0.435294)
 
 [node name="Stage1Sample" type="Node3D"]
-script = ExtResource("1_a6x1v")
+script = SubResource("CSharpScript_j8f4f")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_5jgpk")

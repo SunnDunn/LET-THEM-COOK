@@ -2,7 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://datqyilvw8xgd" path="res://PathFinded/sample.tres" id="1_gsgtc"]
 [ext_resource type="Script" path="res://PathFinded/TestingMyGridMap.gd" id="1_wsibc"]
-[ext_resource type="PackedScene" path="res://PathFinded/goal.tscn" id="2_jbfq8"]
+[ext_resource type="PackedScene" uid="uid://di6cijppqx8yt" path="res://PathFinded/goal.tscn" id="2_jbfq8"]
 [ext_resource type="PackedScene" uid="uid://bewcufirbc62o" path="res://PathFinded/enemy.tscn" id="4_egw6o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h8lm0"]

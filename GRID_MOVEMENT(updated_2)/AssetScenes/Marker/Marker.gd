@@ -1,13 +1,18 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
+#Constants
+const SPEED = 7.5
+const ROT_SPEED = 2.0
 const JUMP_VELOCITY = 4.5
-
 # Get Gravity
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
 func _physics_process(delta):
-	# Gravity
+	 #Gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -28,4 +33,3 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-

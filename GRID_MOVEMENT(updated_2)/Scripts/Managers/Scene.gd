@@ -1,7 +1,8 @@
 extends Node
 
-@onready var marker = $Marker/Marker
-@onready var activeCharacter = $Characters/Character
+@onready var marker = $Movement/Marker/Marker
+@onready var activeCharacter = $Movement/Characters/Character
+@onready var characters = get_tree().get_nodes_in_group("Players")
 
 # Attributes
 var markerPos_initial = Vector3(1, 3, 1)
@@ -10,8 +11,8 @@ var target_position
 	#replace this with in-character code later
 var charAgility 
 	#labels and text
-@onready var distanceLabel = $MovementUI/Panel/HBoxContainer/VBoxContainer/Distance
-@onready var errorLabel =$MovementUI/Panel/HBoxContainer/VBoxContainer/ErrorHandling
+@onready var distanceLabel = $Movement/MovementUI/Panel/HBoxContainer/VBoxContainer/Distance
+@onready var errorLabel =$Movement/MovementUI/Panel/HBoxContainer/VBoxContainer/ErrorHandling
 
 # MRKER AND CHARACTERS
 func reset_marker():

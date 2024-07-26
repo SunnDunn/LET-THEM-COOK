@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s7t8sthebewx"
-path="res://.godot/imported/ButtonBackground.png-d910a2724b79f9c4fd3620b59a20c627.ctex"
+uid="uid://d3ryfum7agi4b"
+path="res://.godot/imported/MenuBackground.png-4227437b97131b86143a47de77f15cff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GRID_MOVEMENT/Assets/UI/ButtonBackground.png"
-dest_files=["res://.godot/imported/ButtonBackground.png-d910a2724b79f9c4fd3620b59a20c627.ctex"]
+source_file="res://GRID_MOVEMENT(updated_2)/Assets/UI/MenuBackground.png"
+dest_files=["res://.godot/imported/MenuBackground.png-4227437b97131b86143a47de77f15cff.ctex"]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=1
+compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

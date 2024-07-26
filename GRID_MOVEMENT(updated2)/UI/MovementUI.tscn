@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://bux4ku5xuu8w7"]
+
+[ext_resource type="Texture2D" uid="uid://d3ryfum7agi4b" path="res://GRID_MOVEMENT/Assets/UI/MenuBackground.png" id="1_iarlw"]
+
+[node name="MovementUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.427493, 0.427493, 0.427493, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_iarlw")

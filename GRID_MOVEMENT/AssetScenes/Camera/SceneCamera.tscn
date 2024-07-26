@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck5p60740fy26"]
+
+[ext_resource type="Script" path="res://GRID_MOVEMENT/AssetScenes/Camera/SceneCamera.gd" id="1_fyksd"]
+
+[node name="Camera3D" type="Camera3D"]
+script = ExtResource("1_fyksd")

@@ -2,19 +2,19 @@ extends Node
 
 @onready var marker = $Movement/Marker/Marker
 @onready var activeCharacter = $Movement/Characters/Character
-@onready var characters = get_tree().get_nodes_in_group("Players")
+#@onready var characters = get_tree().get_nodes_in_group("Players")
 
 # Attributes
 var markerPos_initial = Vector3(1, 3, 1)
 	#positions
 var target_position
-	#replace this with in-character code later
+	#relevant character attributes
 var charAgility 
 	#labels and text
 @onready var distanceLabel = $Movement/MovementUI/Panel/HBoxContainer/VBoxContainer/Distance
-@onready var errorLabel =$Movement/MovementUI/Panel/HBoxContainer/VBoxContainer/ErrorHandling
+@onready var errorLabel = $Movement/MovementUI/Panel/HBoxContainer/VBoxContainer/ErrorHandling
 
-# MRKER AND CHARACTERS
+# MARKER AND CHARACTERS
 func reset_marker():
 	marker.position = markerPos_initial
 func set_target_position(marker_position):
@@ -35,29 +35,20 @@ func errorLabel_text():
 func _on_confirm_distance_pressed():
 	if(distance_check() <= charAgility):
 		set_target_position(marker.position)
+		get_tree().call_group("Players", "update_target_location", target_position)
 		reset_marker()
-		activeCharacter.position = target_position
 	else:
 		reset_marker()
-		#get_tree().call_group("Players", "update_target_location", target_position)
 
 func _ready():
 	charAgility = activeCharacter.get_agility()
 
-func _process(delta):
-	pass
-
 func _physics_process(delta):
-	# Update Distance Label
+	# UPDATE DISTANCE LABEL
 	distanceLabel.text = str(round_to_dec(distance_check(), 2))
 	errorLabel_text()
-	
-	# TENTATIVE: CODE'S JUST HERE UNTIL I FIGURE OUT HOW TO DISABLE NAV AGENT
-	#if(_on_confirm_distance_pressed()):
-		#get_tree().call_group("Players", "update_target_location", target_position)
-		#activeCharacter.position = target_position
-		#reset_marker()
 
-	#if(activeCharacter.nav.is_navigation_finished()):
-		#activeCharacter.disable_nav_agent()
+	# DISABLING NAV AGENT
+	if(activeCharacter.nav.is_navigation_finished()):
+		activeCharacter.disable_nav_agent()
 

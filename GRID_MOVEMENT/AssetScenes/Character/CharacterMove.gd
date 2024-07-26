@@ -1,10 +1,10 @@
 extends CharacterBody3D
-
-# Attributes
+# Nav Attributes
 var speed = 3
 var accel = 10
 # Other Attributes
 var agility = 5
+var isActive: bool = false
 
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
 
@@ -30,5 +30,4 @@ func update_target_location(target_location):
 	nav.set_target_position(target_location)
 	
 func disable_nav_agent():
-	#nav.NODE_PROCESS_DISABLED
-	pass
+	nav.set_target_position(global_transform.origin)

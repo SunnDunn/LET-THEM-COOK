@@ -1,26 +1,20 @@
 extends CharacterBody3D
 
-const SPEED = 5
+#Constants
+const SPEED = 7.5
+const ROT_SPEED = 2.0
 const JUMP_VELOCITY = 4.5
-const ROT_SPEED = 2
-
-var click_position = Vector3()
-var target_position = Vector3()
-
 # Get Gravity
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	click_position = position
+	pass # Replace with function body.
 
 func _physics_process(delta):
-	#if Input.is_action_just_pressed("left_click"):
-	#rotate_y(deg_to_rad(ROT_SPEED))
-
-	# Gravity
+	 #Gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
 	# Jump Physics
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY

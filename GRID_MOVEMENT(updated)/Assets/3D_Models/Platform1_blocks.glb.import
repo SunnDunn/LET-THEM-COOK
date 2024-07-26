@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://y8xfr8bbp0a5"
-path="res://.godot/imported/Platform1_blocks.glb-a1a97804fc156049f6a2b9715e195c00.scn"
+path="res://.godot/imported/Platform1_blocks.glb-64d8c7ee151e53aab9f563c7c6f697ad.scn"
 
 [deps]
 
-source_file="res://GRID_MOVEMENT/Assets/3D_Models/Platform1_blocks.glb"
-dest_files=["res://.godot/imported/Platform1_blocks.glb-a1a97804fc156049f6a2b9715e195c00.scn"]
+source_file="res://GRID_MOVEMENT(updated)/Assets/3D_Models/Platform1_blocks.glb"
+dest_files=["res://.godot/imported/Platform1_blocks.glb-64d8c7ee151e53aab9f563c7c6f697ad.scn"]
 
 [params]
 

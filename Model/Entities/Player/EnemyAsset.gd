@@ -11,8 +11,7 @@ var health : float = 100:
 
 func _update_progress_bar():
 	progress_bar.value = (health/MAX_HEALTH) * 100
-		
-		
+
 func focus():
 	_focus.show()
 	

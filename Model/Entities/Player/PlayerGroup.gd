@@ -9,7 +9,6 @@ func _ready():
 	players[0].focus()
 	#for i in enemies.size():
 	#enemies[i].position = Vector3(i*8,0,0)
- 	
 
 func _on_enemy_group_next_player():
 	#with every signal player focus will just go down

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://h0mqpnjakulb"]
+[gd_scene load_steps=11 format=3 uid="uid://h0mqpnjakulb"]
 
 [ext_resource type="Script" path="res://GRID_MOVEMENT/AssetScenes/Character/CharacterMove.gd" id="1_y4f25"]
+[ext_resource type="Texture2D" uid="uid://dru88fovpwo86" path="res://View/Carrot Character.png" id="2_ugtrh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8qbx"]
 albedo_color = Color(0.0117647, 0.411765, 0.831373, 1)
@@ -10,13 +11,56 @@ material = SubResource("StandardMaterial3D_y8qbx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r6djc"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n3qj"]
+atlas = ExtResource("2_ugtrh")
+region = Rect2(0, 304, 202, 304)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghfxb"]
+atlas = ExtResource("2_ugtrh")
+region = Rect2(202, 304, 202, 304)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejpmj"]
+atlas = ExtResource("2_ugtrh")
+region = Rect2(404, 304, 202, 304)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxvhr"]
+atlas = ExtResource("2_ugtrh")
+region = Rect2(606, 304, 202, 304)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wsolp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n3qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghfxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejpmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxvhr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Character" type="CharacterBody3D" groups=["Players"]]
 script = ExtResource("1_y4f25")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_55btt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_r6djc")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_wsolp")
+frame = 3
+frame_progress = 0.185738

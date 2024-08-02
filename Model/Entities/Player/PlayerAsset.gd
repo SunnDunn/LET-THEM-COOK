@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @onready var _focus = $Focus
-@onready var progress_bar = $EnemyHealthBar
+@onready var progress_bar = $PlayerHealthBar
 
 @export var MAX_HEALTH : float = 100
 var health : float = 100:

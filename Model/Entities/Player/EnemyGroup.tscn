@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1lmdch1kg7ux"]
+
+[ext_resource type="Script" path="res://Model/Entities/Player/EnemyGroup.gd" id="1_ckw7w"]
+[ext_resource type="PackedScene" uid="uid://bhwmyvuxxqttl" path="res://Model/Entities/Player/EnemyAsset.tscn" id="2_wrx0r"]
+
+[node name="EnemyGroup" type="Node3D"]
+script = ExtResource("1_ckw7w")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_wrx0r")]
+
+[node name="CharacterBody3D2" parent="." instance=ExtResource("2_wrx0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="EnemyHealthBar" parent="CharacterBody3D2" index="0"]
+offset_top = -400.0
+offset_bottom = -373.0
+
+[node name="CharacterBody3D3" parent="." instance=ExtResource("2_wrx0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="EnemyHealthBar" parent="CharacterBody3D3" index="0"]
+offset_top = -344.0
+offset_bottom = -317.0
+
+[node name="CharacterBody3D4" parent="." instance=ExtResource("2_wrx0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="EnemyHealthBar" parent="CharacterBody3D4" index="0"]
+offset_top = -288.0
+offset_bottom = -261.0
+
+[editable path="CharacterBody3D"]
+[editable path="CharacterBody3D2"]
+[editable path="CharacterBody3D3"]
+[editable path="CharacterBody3D4"]

@@ -1,21 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bumfcbrmaqsms"]
+[gd_scene load_steps=9 format=3 uid="uid://bhwmyvuxxqttl"]
 
 [ext_resource type="Script" path="res://Model/Entities/Player/PlayerAsset.gd" id="1_rbw6s"]
+[ext_resource type="Script" path="res://Combat/Combat.gd" id="2_xfpml"]
+[ext_resource type="Script" path="res://Combat/Stats.gd" id="3_ly1jo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7bie"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvyev"]
 bg_color = Color(0.76101, 0.1894, 0.253067, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3063c"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_offyp"]
 bg_color = Color(0.22293, 0.701927, 0.43864, 1)
 
-[sub_resource type="PrismMesh" id="PrismMesh_1b7mg"]
+[sub_resource type="PrismMesh" id="PrismMesh_es7yx"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_te66r"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wbbbb"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_k0aby"]
+[sub_resource type="BoxMesh" id="BoxMesh_tnpuc"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("stats")]
 script = ExtResource("1_rbw6s")
+stats = NodePath("Stats")
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(100, 0)
@@ -28,8 +31,8 @@ offset_top = -136.0
 offset_right = 196.0
 offset_bottom = -109.0
 grow_vertical = 0
-theme_override_styles/background = SubResource("StyleBoxFlat_c7bie")
-theme_override_styles/fill = SubResource("StyleBoxFlat_3063c")
+theme_override_styles/background = SubResource("StyleBoxFlat_mvyev")
+theme_override_styles/fill = SubResource("StyleBoxFlat_offyp")
 value = 100.0
 show_percentage = false
 
@@ -40,13 +43,23 @@ visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Focus"]
 transform = Transform3D(-1, 2.98023e-08, 0, -2.98023e-08, -1, 0, 0, 0, 1, 0, 2.39337, 0)
-mesh = SubResource("PrismMesh_1b7mg")
+mesh = SubResource("PrismMesh_es7yx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_te66r")
+shape = SubResource("BoxShape3D_wbbbb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_k0aby")
+mesh = SubResource("BoxMesh_tnpuc")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(3, 0, 0)
+
+[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("parentNode")]
+script = ExtResource("2_xfpml")
+parentNode = NodePath("..")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("3_ly1jo")

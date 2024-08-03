@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://d01a2o3ra5opn"]
+[gd_scene load_steps=5 format=3 uid="uid://d01a2o3ra5opn"]
 
-[ext_resource type="PackedScene" uid="uid://b1lmdch1kg7ux" path="res://Model/Entities/Player/EnemyGroup.tscn" id="1_ksl3g"]
-[ext_resource type="PackedScene" uid="uid://ley0hi5mw3y4" path="res://Model/Entities/Player/PlayerGroup.tscn" id="2_4cm3c"]
+[ext_resource type="Script" path="res://testing.gd" id="1_hkr53"]
+[ext_resource type="PackedScene" uid="uid://b1lmdch1kg7ux" path="res://Model/Entities/Player/PlayerGroup.tscn" id="1_ksl3g"]
+[ext_resource type="PackedScene" uid="uid://ley0hi5mw3y4" path="res://Model/Entities/Player/EnemyGroup.tscn" id="2_4cm3c"]
+[ext_resource type="Script" path="res://Model/Entities/Player/TrialPlayerGroup.gd" id="3_bf1rb"]
 
 [node name="BattleScene" type="Node3D"]
+script = ExtResource("1_hkr53")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -5, 1, 1)
 
-[node name="EnemyGroup" parent="." instance=ExtResource("1_ksl3g")]
+[node name="PlayerGroup" parent="." instance=ExtResource("1_ksl3g")]
+script = ExtResource("3_bf1rb")
 
-[node name="PlayerGroup" parent="." instance=ExtResource("2_4cm3c")]
+[node name="EnemyGroup" parent="." instance=ExtResource("2_4cm3c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
 [node name="UI" type="Node2D" parent="."]
@@ -44,5 +48,6 @@ layout_mode = 2
 text = "HEAL
 "
 
-[connection signal="next_enemy" from="PlayerGroup" to="EnemyGroup" method="_on_player_group_next_enemy"]
 [connection signal="pressed" from="UI/CanvasLayer/PlayerActions/Attack" to="PlayerGroup" method="_on_attack_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/PlayerActions/Defense" to="PlayerGroup" method="_on_defense_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/PlayerActions/Heal" to="PlayerGroup" method="_on_heal_pressed"]

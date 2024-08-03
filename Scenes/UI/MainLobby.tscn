@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmpri71kpee8r"]
+
+[ext_resource type="Texture2D" uid="uid://d4bxk1ov5wuo1" path="res://icon.svg" id="1_padpv"]
+
+[node name="MainLobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Username" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Username"]
+layout_mode = 2
+texture = ExtResource("1_padpv")
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/Username"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "username"

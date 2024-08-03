@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b363vxt8gr7a3"]
+[gd_scene load_steps=10 format=3 uid="uid://b363vxt8gr7a3"]
+
+[ext_resource type="Texture2D" uid="uid://dru88fovpwo86" path="res://View/Carrot Character.png" id="1_wta3f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43wxl"]
 albedo_color = Color(1, 0.0862745, 0.133333, 1)
@@ -8,10 +10,51 @@ material = SubResource("StandardMaterial3D_43wxl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w2a43"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_27aoq"]
+atlas = ExtResource("1_wta3f")
+region = Rect2(0, 0, 202, 304)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cacbg"]
+atlas = ExtResource("1_wta3f")
+region = Rect2(202, 0, 202, 304)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0eiqs"]
+atlas = ExtResource("1_wta3f")
+region = Rect2(404, 0, 202, 304)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndopu"]
+atlas = ExtResource("1_wta3f")
+region = Rect2(606, 0, 202, 304)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cke8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27aoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cacbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0eiqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndopu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Enemy" type="Area3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_ortbm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_w2a43")
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="."]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_cke8i")

@@ -1,24 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://ley0hi5mw3y4"]
+[gd_scene load_steps=3 format=3 uid="uid://b1lmdch1kg7ux"]
 
-[ext_resource type="Script" path="res://Model/Entities/Player/PlayerGroup.gd" id="1_n1eof"]
-[ext_resource type="PackedScene" uid="uid://bumfcbrmaqsms" path="res://Model/Entities/Player/PlayerAsset.tscn" id="1_nc1ql"]
+[ext_resource type="Script" path="res://Model/Entities/Player/PlayerGroup.gd" id="1_ckw7w"]
+[ext_resource type="PackedScene" uid="uid://bhwmyvuxxqttl" path="res://Model/Entities/Player/PlayerAsset.tscn" id="1_nc1ql"]
 
 [node name="PlayerGroup" type="Node3D"]
-script = ExtResource("1_n1eof")
+script = ExtResource("1_ckw7w")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_nc1ql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+[node name="Player01" parent="." instance=ExtResource("1_nc1ql")]
 
-[node name="CharacterBody3D2" parent="." instance=ExtResource("1_nc1ql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+[node name="Player02" parent="." instance=ExtResource("1_nc1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
-[node name="CharacterBody3D3" parent="." instance=ExtResource("1_nc1ql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+[node name="PlayerHealthBar" parent="Player02" index="0"]
+offset_left = 214.0
+offset_right = 314.0
 
-[node name="CharacterBody3D4" parent="." instance=ExtResource("1_nc1ql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+[node name="Player03" parent="." instance=ExtResource("1_nc1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
-[editable path="CharacterBody3D"]
-[editable path="CharacterBody3D2"]
-[editable path="CharacterBody3D3"]
-[editable path="CharacterBody3D4"]
+[node name="PlayerHealthBar" parent="Player03" index="0"]
+offset_left = 332.0
+offset_right = 432.0
+
+[node name="Player04" parent="." instance=ExtResource("1_nc1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="PlayerHealthBar" parent="Player04" index="0"]
+offset_left = 450.0
+offset_right = 550.0
+
+[editable path="Player01"]
+[editable path="Player02"]
+[editable path="Player03"]
+[editable path="Player04"]
